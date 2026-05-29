@@ -19,9 +19,21 @@ MaskCraft 是一个基于 PySide6 的桌面工具，用于选择一张图片和�
 | 原视频 | [input-video.mp4](assets/examples/input-video.mp4) | 作为动作或参考输入的视频。 |
 | 结果视频 | [result-video.mp4](assets/examples/result-video.mp4) | DashScope 生成后的示例结果。 |
 
-人物图片预览：
+人物图片：
 
 ![人物图片示例](assets/examples/person-image.jpg)
+
+原视频预览：
+
+![原视频预览](assets/examples/input-video-preview.gif)
+
+[打开原视频 MP4](assets/examples/input-video.mp4)
+
+结果视频预览：
+
+![结果视频预览](assets/examples/result-video-preview.gif)
+
+[打开结果视频 MP4](assets/examples/result-video.mp4)
 
 ## 环境要求
 
