@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>980</width>
+    <height>660</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>620</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MaskCraft</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background: #f6f7f9;
+}
+QWidget {
+    color: #20242a;
+    font-family: "Microsoft YaHei UI", "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+QLabel#titleLabel {
+    color: #111827;
+    font-size: 26px;
+    font-weight: 700;
+}
+QLabel#subtitleLabel {
+    color: #5b6472;
+    font-size: 14px;
+}
+QGroupBox {
+    background: #ffffff;
+    border: 1px solid #d9dee7;
+    border-radius: 8px;
+    margin-top: 18px;
+    padding: 18px 16px 14px 16px;
+    font-size: 15px;
+    font-weight: 600;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 14px;
+    padding: 0 8px;
+    color: #111827;
+}
+QLineEdit {
+    background: #ffffff;
+    border: 1px solid #cbd3df;
+    border-radius: 6px;
+    padding: 8px 10px;
+    selection-background-color: #2f6feb;
+}
+QLineEdit:focus {
+    border-color: #2f6feb;
+}
+QLineEdit[readOnly="true"] {
+    background: #f9fafb;
+    color: #374151;
+}
+QPushButton {
+    background: #ffffff;
+    border: 1px solid #cbd3df;
+    border-radius: 6px;
+    padding: 8px 14px;
+    min-height: 20px;
+}
+QPushButton:hover {
+    background: #f3f6fb;
+}
+QPushButton:pressed {
+    background: #e8edf6;
+}
+QPushButton:disabled {
+    color: #9aa3af;
+    background: #f3f4f6;
+}
+QPushButton#generateButton {
+    background: #1f6feb;
+    border-color: #1f6feb;
+    color: #ffffff;
+    font-weight: 600;
+}
+QPushButton#generateButton:hover {
+    background: #1a5fd0;
+}
+QTextEdit {
+    background: #111827;
+    color: #d1d5db;
+    border: 1px solid #111827;
+    border-radius: 8px;
+    padding: 10px;
+    font-family: "Cascadia Mono", Consolas, monospace;
+    font-size: 12px;
+}
+QProgressBar {
+    border: 1px solid #d9dee7;
+    border-radius: 5px;
+    text-align: center;
+    background: #ffffff;
+    min-height: 10px;
+}
+QProgressBar::chunk {
+    background: #1f6feb;
+    border-radius: 4px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="mainLayout">
+    <property name="spacing">
+     <number>16</number>
+    </property>
+    <property name="leftMargin">
+    <number>32</number>
+    </property>
+    <property name="topMargin">
+    <number>28</number>
+    </property>
+    <property name="rightMargin">
+    <number>32</number>
+    </property>
+    <property name="bottomMargin">
+    <number>28</number>
+    </property>
+    <item>
+     <layout class="QVBoxLayout" name="headerLayout">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="titleLabel">
+        <property name="text">
+         <string>MaskCraft</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="subtitleLabel">
+        <property name="text">
+         <string>选择一张图片和一段参考视频，生成任务完成后会在下方显示 API 返回的视频链接。</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="inputGroupBox">
+      <property name="title">
+       <string>输入素材</string>
+      </property>
+      <layout class="QGridLayout" name="inputGridLayout">
+       <property name="horizontalSpacing">
+        <number>10</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>12</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="imagePathLabel">
+         <property name="text">
+          <string>图片</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+       <widget class="QLineEdit" name="imagePathLineEdit">
+         <property name="minimumSize">
+          <size>
+           <width>560</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>JPG / PNG / BMP / WebP，最大 5MB</string>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+       <widget class="QPushButton" name="selectImageButton">
+         <property name="minimumSize">
+          <size>
+           <width>104</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>选择图片</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="videoPathLabel">
+         <property name="text">
+          <string>视频</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+       <widget class="QLineEdit" name="videoPathLineEdit">
+         <property name="minimumSize">
+          <size>
+           <width>560</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="placeholderText">
+          <string>MP4 / AVI / MOV，2-30 秒，最大 200MB</string>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+       <widget class="QPushButton" name="selectVideoButton">
+         <property name="minimumSize">
+          <size>
+           <width>104</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>选择视频</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="actionGroupBox">
+      <property name="title">
+       <string>生成</string>
+      </property>
+      <layout class="QVBoxLayout" name="actionLayout">
+       <property name="spacing">
+        <number>12</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="actionButtonLayout">
+         <item>
+          <widget class="QPushButton" name="generateButton">
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>开始生成</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="statusLabel">
+           <property name="text">
+            <string>等待选择素材</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="actionSpacer">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QProgressBar" name="taskProgressBar">
+         <property name="maximum">
+          <number>100</number>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+         <property name="textVisible">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QGroupBox" name="resultGroupBox">
+      <property name="title">
+       <string>输出结果</string>
+      </property>
+      <layout class="QVBoxLayout" name="resultLayout">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <item>
+        <layout class="QHBoxLayout" name="resultLinkLayout">
+         <item>
+         <widget class="QLineEdit" name="resultUrlLineEdit">
+          <property name="minimumSize">
+           <size>
+            <width>560</width>
+            <height>0</height>
+           </size>
+          </property>
+           <property name="placeholderText">
+            <string>任务成功后，这里会显示返回的视频链接</string>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+         <widget class="QPushButton" name="copyResultButton">
+          <property name="minimumSize">
+           <size>
+            <width>104</width>
+            <height>0</height>
+           </size>
+          </property>
+           <property name="text">
+            <string>复制链接</string>
+           </property>
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+         <widget class="QPushButton" name="openResultButton">
+          <property name="minimumSize">
+           <size>
+            <width>104</width>
+            <height>0</height>
+           </size>
+          </property>
+           <property name="text">
+            <string>打开链接</string>
+           </property>
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="logTextEdit">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="placeholderText">
+          <string>任务日志会显示在这里</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>selectImageButton</tabstop>
+  <tabstop>selectVideoButton</tabstop>
+  <tabstop>generateButton</tabstop>
+  <tabstop>copyResultButton</tabstop>
+  <tabstop>openResultButton</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
