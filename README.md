@@ -9,6 +9,20 @@ MaskCraft 是一个基于 PySide6 的桌面工具，用于选择一张图片和�
 - 创建异步视频生成任务并轮询任务状态。
 - 在界面中展示任务日志、原始返回结果和最终视频链接。
 
+## 示例素材
+
+项目内置了一组示例文件，方便快速了解输入素材和生成结果：
+
+| 类型 | 文件 | 说明 |
+| --- | --- | --- |
+| 人物图片 | [person-image.jpg](assets/examples/person-image.jpg) | 用于驱动生成的人物图片。 |
+| 原视频 | [input-video.mp4](assets/examples/input-video.mp4) | 作为动作或参考输入的视频。 |
+| 结果视频 | [result-video.mp4](assets/examples/result-video.mp4) | DashScope 生成后的示例结果。 |
+
+人物图片预览：
+
+![人物图片示例](assets/examples/person-image.jpg)
+
 ## 环境要求
 
 - Python 3.14 或更高版本。
